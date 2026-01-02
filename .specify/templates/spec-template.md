@@ -105,6 +105,7 @@
 <!--
   ACTION REQUIRED: Define measurable success criteria.
   These must be technology-agnostic and measurable.
+  Must align with constitution principles: simplicity, production-grade practices, explicit state management.
 -->
 
 ### Measurable Outcomes
@@ -113,3 +114,10 @@
 - **SC-002**: [Measurable metric, e.g., "System handles 1000 concurrent users without degradation"]
 - **SC-003**: [User satisfaction metric, e.g., "90% of users successfully complete primary task on first attempt"]
 - **SC-004**: [Business metric, e.g., "Reduce support tickets related to [X] by 50%"]
+
+### Constitution Alignment
+
+- **Simplicity First**: Solution implements only required functionality without over-engineering
+- **Production-Grade Practices**: Implementation follows production-ready patterns including error handling, observability, and documentation
+- **Explicit State Management**: All state changes are traceable with no hidden global state
+- **Clear Separation of Concerns**: Distinct boundaries between business logic, data persistence, and user interfaces

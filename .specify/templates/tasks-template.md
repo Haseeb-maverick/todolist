@@ -157,6 +157,14 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Security hardening
 - [ ] TXXX Run quickstart.md validation
 
+### Constitution Compliance Check
+
+- [ ] All code follows production-grade practices (error handling, logging, documentation)
+- [ ] State management is explicit with no hidden global state
+- [ ] Clear separation of concerns maintained across all components
+- [ ] Simplicity-first approach validated - no over-engineering present
+- [ ] Implementation can evolve incrementally without breaking existing abstractions
+
 ---
 
 ## Dependencies & Execution Order

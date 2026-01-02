@@ -1,31 +1,25 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: Phase I – In-Memory Console-Based Todo App
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-todo-app` | **Date**: 2026-01-01 | **Spec**: [specs/001-todo-app/spec.md](spec.md)
+**Input**: Feature specification from `/specs/001-todo-app/spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+Implementation of a clean, spec-driven Python console application that manages todos entirely in memory with full CRUD functionality. The architecture follows a layered approach with clear separation of concerns between domain logic, state management, application logic, and interface layers.
 
 ## Technical Context
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
-
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: Python 3.8+ (compatible with common Python versions)
+**Primary Dependencies**: Standard Python library only (no external dependencies)
+**Storage**: In-memory only (Python lists/dicts, no file or database persistence)
+**Testing**: Python's built-in unittest module for testing
+**Target Platform**: Cross-platform (Windows, macOS, Linux)
+**Project Type**: Single console application - determines source structure
+**Performance Goals**: Fast response times (<100ms for all operations), minimal memory usage
+**Constraints**: <100MB memory usage, console-based interface only, deterministic behavior
+**Scale/Scope**: Single-user application, up to 1000 todos in memory
 
 ## Constitution Check
 
@@ -43,11 +37,11 @@
 ### Phase-Specific Validation
 
 **Phase I (In-Memory Console App)**:
-- [ ] Uses Python with clean modular structure
-- [ ] Data stored in memory only (no external persistence)
-- [ ] Console-based interaction
-- [ ] Deterministic behavior
-- [ ] Testable business logic separated from I/O
+- [x] Uses Python with clean modular structure
+- [x] Data stored in memory only (no external persistence)
+- [x] Console-based interaction
+- [x] Deterministic behavior
+- [x] Testable business logic separated from I/O
 
 **Phase II (Full-Stack Web Application)**:
 - [ ] RESTful API design with clear contracts
@@ -79,9 +73,8 @@
 ## Project Structure
 
 ### Documentation (this feature)
-
 ```text
-specs/[###-feature]/
+specs/001-todo-app/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)
@@ -91,51 +84,26 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
-
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
+todo_app/
+├── domain/
+│   └── todo.py
+├── store/
+│   └── todo_store.py
+├── commands/
+│   ├── add.py
+│   ├── view.py
+│   ├── update.py
+│   ├── delete.py
+│   └── complete.py
 ├── cli/
-└── lib/
-
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+│   └── console.py
+├── main.py
+├── README.md
+└── requirements.txt
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Single console application with clean separation of concerns following the layered architecture specified in the requirements. The structure includes domain models, in-memory storage, command handlers, and CLI interface as separate modules.
 
 ## Complexity Tracking
 

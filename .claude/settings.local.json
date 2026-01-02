@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir C:UsershaseeOneDriveDesktoptodolistREADME.md)",
+      "Bash(timeout 10s python -m todo_app)",
+      "Bash(python C:UsershaseeOneDriveDesktoptodolisttodo.py)",
+      "Bash(python todo.py)",
+      "Bash(powershell -ExecutionPolicy Bypass -File .specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)"
+    ]
+  }
+}
